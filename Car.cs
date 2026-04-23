@@ -21,8 +21,14 @@ public class Car
 
     public void Start()
     {
+        if (_isRunning)
+        {
+            Console.WriteLine("Car is already running.");
+            return;
+        }
         _isRunning = true;
         _speed = 0;
+        Console.WriteLine("Car started at 0 km/h.");
     }
 
     public void Accelerate()
@@ -39,7 +45,7 @@ public class Car
         for (int i = 0; i < steps; i++)
         {
             _speed++;
-            _engine.increase();
+            _engine.Increase();
         }
 
         Console.WriteLine($"Accelerating... Current Speed: {_speed} km/h");
@@ -55,10 +61,11 @@ public class Car
             return;
         }
 
-        for (int i = 0; i < 20; i++)
+        int steps = Math.Min(SpeedIncrement, _speed);
+
+        for (int i = 0; i < steps; i++)
         {
             _speed--;
-            _engine.decrease();
         }
 
         Console.WriteLine($"Braking... Current Speed: {_speed} km/h");
@@ -83,8 +90,8 @@ public class Car
     }
     private void AdviseEngine()
     {
-        while (_engine.Speed < _speed) _engine.increase();
-        while (_engine.Speed > _speed) _engine.decrease();
+        while (_engine.Speed < _speed) _engine.Increase();
+        while (_engine.Speed > _speed) _engine.Decrease();
         _engine.PrintStatus();
     }
 }
