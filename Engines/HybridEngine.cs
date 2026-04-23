@@ -2,7 +2,7 @@ using Interfaces;
 
 namespace Engines;
 
-public class MixedEngine : IEngine
+public class HybridEngine : IEngine
 {
     private readonly ElectricEngine _electricEngine = new ElectricEngine();
     private readonly GasolineEngine _gasolineEngine = new GasolineEngine();
@@ -32,6 +32,6 @@ public class MixedEngine : IEngine
     public void PrintStatus()
     {
         string activeType = Speed < 50 ? "Electric" : "Gasoline";
-        Console.WriteLine($"[Mixed Engine] speed: {Speed}, Active Engine: {activeType}");
+        Console.WriteLine($"[Hybrid Engine] speed: {Speed}, Active Engine: {activeType}");
     }
 }
