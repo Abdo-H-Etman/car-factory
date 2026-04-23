@@ -24,6 +24,13 @@ car.Accelerate();
 car.Brake();
 car.Stop();
 
+Console.WriteLine("\n\n[SCENARIO] Testing start while already running...");
+Console.WriteLine("------------------------\n");
+var anotherCar = CarFactory.CreateCar(EngineType.Gasoline);
+anotherCar.Start();
+anotherCar.Start();
+
+
 Console.WriteLine("\n\n[SCENARIO] Braking to 0 and stopping...");
 Console.WriteLine("------------------------\n");
 car.Brake();
